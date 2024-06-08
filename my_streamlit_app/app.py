@@ -100,17 +100,36 @@ if uploaded_file is not None:
 
         return fibo_236, fibo_382, fibo_500, fibo_618, fibo_100
 
-    fibo_236, fibo_382, fibo_500, fibo_618, fibo_100 = calculate_fibonacci_levels(data)
+    # 各市場ごとのフィボナッチレベルを計算
+    fibo_236_tokyo, fibo_382_tokyo, fibo_500_tokyo, fibo_618_tokyo, fibo_100_tokyo = calculate_fibonacci_levels(tokyo_time)
+    fibo_236_europe, fibo_382_europe, fibo_500_europe, fibo_618_europe, fibo_100_europe = calculate_fibonacci_levels(europe_time)
+    fibo_236_ny, fibo_382_ny, fibo_500_ny, fibo_618_ny, fibo_100_ny = calculate_fibonacci_levels(ny_time)
 
+    # フィボナッチレベルをプロット
     st.write("フィボナッチレベル（東京時間）:")
     st.line_chart(pd.DataFrame({
-        "Fibo 23.6%": fibo_236,
-        "Fibo 38.2%": fibo_382,
-        "Fibo 50.0%": fibo_500,
-        "Fibo 61.8%": fibo_618,
-        "Fibo 100%": fibo_100
+        "Fibo 23.6%": fibo_236_tokyo,
+        "Fibo 38.2%": fibo_382_tokyo,
+        "Fibo 50.0%": fibo_500_tokyo,
+        "Fibo 61.8%": fibo_618_tokyo,
+        "Fibo 100%": fibo_100_tokyo
     }))
 
+    st.write("フィボナッチレベル（欧州市場）:")
+    st.line_chart(pd.DataFrame({
+        "Fibo 23.6%": fibo_236_europe,
+        "Fibo 38.2%": fibo_382_europe,
+        "Fibo 50.0%": fibo_500_europe,
+        "Fibo 61.8%": fibo_618_europe,
+        "Fibo 100%": fibo_100_europe
+    }))
 
-
+    st.write("フィボナッチレベル（NY市場）:")
+    st.line_chart(pd.DataFrame({
+        "Fibo 23.6%": fibo_236_ny,
+        "Fibo 38.2%": fibo_382_ny,
+        "Fibo 50.0%": fibo_500_ny,
+        "Fibo 61.8%": fibo_618_ny,
+        "Fibo 100%": fibo_100_ny
+    }))
 
